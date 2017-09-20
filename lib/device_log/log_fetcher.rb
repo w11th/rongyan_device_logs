@@ -16,14 +16,14 @@ module DeviceLog
         logs_count += 1
         next if log.last_modified.to_i < last_run_timestamp
         Logging.logger.debug "#{log.key} need to be saved. last_modified=#{log.last_modified}, last_run_time=#{Time.strptime(last_run_timestamp.to_s, '%s').utc}"
-        p "#{log.key} need to be saved. last_modified=#{log.last_modified}, last_run_time=#{Time.strptime(last_run_timestamp.to_s, '%s').utc}"
+        p "[#{new_run_time}] #{log.key} need to be saved. last_modified=#{log.last_modified}, last_run_time=#{Time.strptime(last_run_timestamp.to_s, '%s').utc}"
         LogBucket.save_log(log.key)
         saved_logs << log.key
       end
 
       DB.timestamp = new_run_time.to_i
       Logging.logger.info "used_time: #{Time.now - new_run_time} total_logs: #{logs_count} saved_logs: #{saved_logs.count}"
-      p "used_time: #{Time.now - new_run_time} total_logs: #{logs_count} saved_logs: #{saved_logs.count}"
+      p "[#{new_run_time}] used_time: #{Time.now - new_run_time} total_logs: #{logs_count} saved_logs: #{saved_logs.count}"
     end
   end
 end
