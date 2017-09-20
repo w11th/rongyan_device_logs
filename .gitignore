@@ -9,4 +9,5 @@
 
 /conf/conf.yml
 /db/registry
-/log/
+/log/*
+/vendor/
