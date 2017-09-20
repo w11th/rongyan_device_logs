@@ -2,6 +2,6 @@
 
 $LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
 
-require 'log_fetcher'
+require 'device_log/log_fetcher'
 
-LogFetcher.fetch
+DeviceLog::LogFetcher.fetch
