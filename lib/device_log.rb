@@ -7,7 +7,8 @@ module DeviceLog
   autoload :LogFetcher, 'device_log/log_fetcher.rb'
   autoload :DB, 'device_log/db.rb'
 
+  @logger = ::Logger.new(Configuration.log_file)
   def self.logger
-    @logger ||= ::Logger.new(Configuration.log_file)
+    @logger
   end
 end
