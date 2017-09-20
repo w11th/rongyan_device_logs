@@ -1,0 +1,8 @@
+[ota_update_fail] [19/Sep/2017:18:16:57 +0800] - - - - - - - - '-' - '-' {} {} - {}
+
+[ota_find_success] [19/Sep/2017:18:21:53 +0800] CNDFBP9C161203001713 rk312x 6.0.5 6.0.5_diff_v1 6.0.5_diff_v1.zip 2203956 - success '-' 125.119.206.168 'http://rongyan-ota.huo365.cn/OtaUpdater/android?product=rk312x&version=6.0.5&sn=CNDFBP9C161203001713&country=CN&language=zh' {} {} 200 {'Server':'nginx/1.10.3 (Ubuntu)','Date':'Tue, 19 Sep 2017 10:21:53 GMT','Connection':'keep-alive','Content-Disposition':'attachment; filename="6.0.5_diff_v1.zip"','OtaPackageUri':'/OtaUpdater/android?product=rk312x&version=6.0.5','OtaPackageName':'6.0.5_diff_v1.zip','OtaPackageLength':'2203956','OtaPackageVersion':'6.0.5_diff_v1'}
+
+[ota_download_success] [19/Sep/2017:18:21:56 +0800] CNDFBP9C161203001713 rk312x 6.0.5 6.0.5_diff_v1 6.0.5_diff_v1.zip 2203956 2203956 success '-' 125.119.206.168 'http://rongyan-ota.huo365.cn/OtaUpdater/android?product=rk312x&version=6.0.5' {} {'Range':'bytes=0-2203955'} 206 {'Server':'nginx/1.10.3 (Ubuntu)','Date':'Tue, 19 Sep 2017 10:21:53 GMT','Content-Length':'2203956','Connection':'keep-alive','Accept-Ranges':'bytes','Content-Disposition':'attachment; filename="6.0.5_diff_v1.zip"','OtaPackageUri':'/OtaUpdater/android?product=rk312x&version=6.0.5','OtaPackageName':'6.0.5_diff_v1.zip','OtaPackageLength':'2203956','OtaPackageVersion':'6.0.5_diff_v1'}
+
+[ota_update_success] [19/Sep/2017:18:23:30 +0800] - - - - - - - - '-' - '-' {} {} - {}
+
