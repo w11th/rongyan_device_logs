@@ -20,7 +20,7 @@ module DeviceLog
       end
 
       DB.timestamp = new_run_time.to_i
-      DeviceLog.logger.info "used_time: #{Time.now - new_run_time} total_logs: #{logs_count} saved_logs: #{saved_logs.count}"
+      Logging.logger.info "used_time: #{Time.now - new_run_time} total_logs: #{logs_count} saved_logs: #{saved_logs.count}"
       p "used_time: #{Time.now - new_run_time} total_logs: #{logs_count} saved_logs: #{saved_logs.count}"
     end
   end

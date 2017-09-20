@@ -28,7 +28,7 @@ module DeviceLog
       end
 
       def sdk_log_file
-        @log_file ||= File.join(log_dir, 'oss_sdk.log')
+        @sdk_log_file ||= File.join(log_dir, 'oss_sdk.log')
       end
 
       private
