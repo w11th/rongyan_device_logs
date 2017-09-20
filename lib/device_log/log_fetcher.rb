@@ -15,6 +15,8 @@ module DeviceLog
       logs.each do |log|
         logs_count += 1
         next if log.last_modified.to_i < last_run_timestamp
+        Logging.logger.debug "#{log.key} need to be saved. last_modified=#{log.last_modified}, last_run_time=#{Time.strptime(last_run_timestamp.to_s, '%s').utc}"
+        p "#{log.key} need to be saved. last_modified=#{log.last_modified}, last_run_time=#{Time.strptime(last_run_timestamp.to_s, '%s').utc}"
         LogBucket.save_log(log.key)
         saved_logs << log.key
       end
