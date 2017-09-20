@@ -4,16 +4,13 @@ module DeviceLog
     # 如果更新时间在上一次执行的时间之前，则不处理该文件，减少请求次数。
     def self.fetch
       # 从 db/registry 获取上一次执行的时间， UTC
-      unless File.file?(Configuration.db_file)
-        File.open(Configuration.db_file, 'w') do |f|
-          f.puts '0'
-        end
-      end
-      last_run_timestamp = File.read(Configuration.db_file).to_i
+      last_run_timestamp = DB.timestamp
       new_run_time = Time.now
 
+      # for logging
       logs_count = 0
       saved_logs = []
+
       logs = LogBucket.list_logs
       logs.each do |log|
         logs_count += 1
@@ -22,11 +19,9 @@ module DeviceLog
         saved_logs << log.key
       end
 
-      File.open(Configuration.db_file, 'w') do |f|
-        f.puts new_run_time.to_i
-      end
-
-      puts "start_time: [#{new_run_time}] end_time: [#{Time.now}] total_logs: #{logs_count} saved_logs: #{saved_logs.count}"
+      DB.timestamp = new_run_time.to_i
+      DeviceLog.logger.info "used_time: #{Time.now - new_run_time} total_logs: #{logs_count} saved_logs: #{saved_logs.count}"
+      p "used_time: #{Time.now - new_run_time} total_logs: #{logs_count} saved_logs: #{saved_logs.count}"
     end
   end
 end
