@@ -20,7 +20,7 @@ module DeviceLog
       end
 
       def device_log_dir
-        @device_log_dir ||= File.join(root_path, 'log', 'device')
+        @device_log_dir ||= File.join(root_path, 'log', 'device_logs')
       end
 
       def log_file

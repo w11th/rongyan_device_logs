@@ -1,4 +1,5 @@
 require 'aliyun/oss'
+require 'fileutils'
 
 module DeviceLog
   module LogBucket
@@ -20,7 +21,6 @@ module DeviceLog
       end
 
       def list_logs(opts = {})
-        opts[:prefix] = Configuration.logs_prefix
         bucket.list_objects(opts)
       end
 
@@ -30,8 +30,10 @@ module DeviceLog
       end
 
       def save_log(key)
-        filename = File.basename(key)
-        target_file = File.join(Configuration.device_log_dir, filename)
+        dir, filename = File.split(key)
+        target_dir = File.join(Configuration.device_log_dir, dir)
+        FileUtils.mkdir_p(target_dir) unless File.directory?(target_dir)
+        target_file = File.join(target_dir, filename)
         bucket.get_object(key, file: target_file)
       end
 
@@ -40,8 +42,7 @@ module DeviceLog
       end
 
       def archive_log(key)
-        filename = File.basename(key)
-        copy_to = "#{Configuration.archived_logs_prefix}#{filename}"
+        copy_to = "#{Configuration.archived_logs_prefix}#{key}"
         bucket.copy_object(key, copy_to, meta_directive: ::Aliyun::OSS::MetaDirective::COPY)
       end
     end
